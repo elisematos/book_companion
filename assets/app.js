@@ -10,14 +10,3 @@ import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
-
-let switchToggleButton = document.querySelector('#switch-theme');
-let theme = document.querySelector('#theme');
-
-switchToggleButton.addEventListener('click', () => {
-    if(theme.getAttribute('data-theme') === 'light') {
-        theme.setAttribute('data-theme', 'dark');
-    } else {
-        theme.setAttribute('data-theme', 'light');
-    }
-})

@@ -1,7 +1,5 @@
-{% include 'navbar.html.twig' %}
-
 <!DOCTYPE html>
-<html id="theme">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +16,7 @@
 </head>
 <body>
 <main class="container">
-    {% block navbar %}{% endblock %}
+    {% include 'navbar.html.twig' %}
     {% block body %}{% endblock %}
 </main>
 </body>
