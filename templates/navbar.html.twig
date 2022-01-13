@@ -1,0 +1,16 @@
+{% block navbar %}
+<nav>
+    <ul>
+        <li>
+            <strong>Book companion</strong>
+        </li>
+    </ul>
+    <ul>
+        <li><a href="{{ path('home') }}">Acceuil</a></li>
+        <li><a href="{{ path('search') }}">Rechercher</a></li>
+        <li><a href="#">Liste</a></li>
+        <li><a href="#">Profil</a></li>
+        <li><input type="checkbox" id="switch-theme" name="switch" role="switch"></li>
+    </ul>
+</nav>
+{% endblock %}
