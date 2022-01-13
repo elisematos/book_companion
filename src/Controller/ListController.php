@@ -6,14 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class ListController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    #[Route('/list', name: 'list')]
     public function index(): Response
     {
-        if ($this->getUser()) {
-            return $this->redirectToRoute('search');
-        }
-        return $this->render('home/index.html.twig');
+        return $this->render('list/index.html.twig', [
+            'controller_name' => 'ListController',
+        ]);
     }
 }

@@ -8,4 +8,10 @@ img {
   margin-right: 20px;
 }
 
+#homepage-login-register {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 @import '~@picocss/pico/scss/pico.scss';

@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-
+    <article>
+        <h1>Bienvenue sur Book Companion</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer risus ante, dictum non consequat sit amet, accumsan sed massa. Nunc rutrum, elit vel accumsan efficitur, est tellus consectetur sem, ut varius augue neque ut leo. Vivamus ut lectus nec turpis posuere lacinia. Cras posuere massa et massa tincidunt, ut laoreet felis consequat. Aliquam erat volutpat. Mauris sed justo sapien. Phasellus eget massa maximus, aliquam lectus vitae, ullamcorper sem. In tempor consectetur dui vitae hendrerit. Donec venenatis sit amet libero tincidunt pulvinar. Nulla at libero interdum, tristique eros ut, tincidunt enim. Phasellus metus metus, ultricies a orci vitae, vestibulum molestie purus.</p>
+        <p id="homepage-login-register">
+            <a href="{{ path('app_login') }}" role="button" class="secondary">Me connecter</a>
+            <a href="{{ path('app_register') }}" role="button" class="contrast">Créer un compte</a>
+        </p>
+    </article>
 {% endblock %}

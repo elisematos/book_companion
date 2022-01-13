@@ -5,6 +5,7 @@
                 <strong>Book companion</strong>
             </li>
         </ul>
+        {% if is_granted('ROLE_USER') %}
         <ul>
             <li>
                 <a href="{{ path('home') }}" aria-label="Aller à la page d'accueil">
@@ -73,5 +74,7 @@
                 </a>
             </li>
         </ul>
+        {% else %}
+        {% endif %}
     </nav>
 {% endblock %}
