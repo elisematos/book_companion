@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\ChangePasswordFormType;
 use App\Form\UpdatePasswordType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,7 +24,7 @@ class ProfileController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $user = $this->getUser();
-        $form = $this->createForm(UpdatePasswordType::class, $user);
+        $form = $this->createForm(ChangePasswordFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -31,7 +32,7 @@ class ProfileController extends AbstractController
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
-                    $form->get('updatedPassword')->getData()
+                    $form->get('plainPassword')->getData()
                 )
             );
 
@@ -42,8 +43,8 @@ class ProfileController extends AbstractController
             return $this->redirectToRoute('profile');
         }
 
-        return $this->render('profile/update_password.html.twig', [
-            'updatePassword' => $form->createView(),
+        return $this->render('reset_password/reset.html.twig', [
+            'resetForm' => $form->createView(),
         ]);
     }
 }
