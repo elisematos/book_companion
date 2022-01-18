@@ -3,6 +3,10 @@
 {% block title %}Rechercher{% endblock %}
 
 {% block body %}
+    {{ form_start(searchForm) }}
+    {{ form_row(searchForm.searchField) }}
+    <button class="btn btn-primary">Rechercher</button>
+    {{ form_end(searchForm) }}
     {% if data.items is defined %}
     <section class="container">
         {%  for item in data.items %}
