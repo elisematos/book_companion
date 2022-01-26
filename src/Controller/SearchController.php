@@ -15,13 +15,15 @@ class SearchController extends AbstractController
     public function index(BooksApiService $booksApiService, Request $request): Response
     {
         $search='';
+        $author='';
         $form = $this->createForm(SearchFormType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
             $search = $form->get('searchField')->getData();
+            $author = $form->get('author')->getData();
         }
         return $this->render('search/index.html.twig', [
-            'data' => $booksApiService->getBooks($search),
+            'data' => $booksApiService->getBooks($search, $author),
             'searchForm' => $form->createView()
         ]);
     }

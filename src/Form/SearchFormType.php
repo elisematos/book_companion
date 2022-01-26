@@ -19,6 +19,14 @@ class SearchFormType extends AbstractType {
                     'placeholder' => 'Rechercher'
                 ]
             ])
+            ->add('author', SearchType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Auteur'
+                ]
+            ])
         ;
     }
 
