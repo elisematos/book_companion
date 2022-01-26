@@ -14,13 +14,12 @@ class BooksApiService
         $this->client = $client;
     }
 
-    public function getBooks($q, $inauthor): array {
+    public function getBooks($q): array {
         $response = $this->client->request(
             'GET',
             'https://www.googleapis.com/books/v1/volumes?', [
                 'query' => [
                     'q' => $q,
-                    '+inauthor' => $inauthor,
                     'key' => BooksApiService::API_KEY
                 ]
             ]

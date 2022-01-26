@@ -5,7 +5,6 @@
 {% block body %}
     {{ form_start(searchForm) }}
     {{ form_row(searchForm.searchField) }}
-    {{ form_row(searchForm.author) }}
     <button class="btn btn-primary">Rechercher</button>
     {{ form_end(searchForm) }}
     {% if data.items is defined %}
