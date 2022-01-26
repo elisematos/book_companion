@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Progress;
 use App\Form\SearchFormType;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,5 +27,20 @@ class SearchController extends AbstractController
             'data' => $data,
             'searchForm' => $form->createView()
         ]);
+    }
+
+    #[Route('/search/addBook', name: 'add_book')]
+    public function addBookToUserList(ManagerRegistry $doctrine, $bookId): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $progress = new Progress();
+        $progress->setUser($this->getUser());
+        $progress->setBookId($bookId);
+        $progress->setPagesRead(0);
+
+        $entityManager->persist($progress);
+        $entityManager->flush();
+
+        return new Response("ADDED new book to reading list");
     }
 }

@@ -22,13 +22,12 @@
                     {% else %}
                         <h5>Auteur inconnu</h5>
                     {% endif %}
-            <button>Ajouter à ma liste</button>
+            <a href="{{ path('add_book', {bookId: 'item.id'}) }}" role="button">Ajouter à ma liste</a>
         </article>
         {% endfor %}
     </section>
     {% else %}
     <section class="container">
-        Aucun résultat correspond à votre recherche
     </section>
     {% endif %}
 {% endblock %}

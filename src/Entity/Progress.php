@@ -24,6 +24,10 @@ class Progress
     #[ORM\OneToMany(mappedBy: 'progress', targetEntity: Note::class, orphanRemoval: true)]
     private $notes;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'progress')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $user;
+
     public function __construct()
     {
         $this->notes = new ArrayCollection();
@@ -84,6 +88,18 @@ class Progress
                 $note->setProgress(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
