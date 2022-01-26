@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Symfony\Component\Dotenv\Dotenv;
 
 class BooksApiService
 {
@@ -15,12 +14,12 @@ class BooksApiService
         $this->client = $client;
     }
 
-    public function getBooks(): array {
+    public function getBooks($q): array {
         $response = $this->client->request(
             'GET',
             'https://www.googleapis.com/books/v1/volumes?', [
                 'query' => [
-                    'q' => 'mousquetaire',
+                    'q' => $q,
                     'key' => BooksApiService::API_KEY
                 ]
             ]

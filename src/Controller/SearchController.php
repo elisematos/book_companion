@@ -14,10 +14,14 @@ class SearchController extends AbstractController
     #[Route('/search', name: 'search')]
     public function index(BooksApiService $booksApiService, Request $request): Response
     {
+        $search='';
         $form = $this->createForm(SearchFormType::class);
         $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $search = $form->get('searchField')->getData();
+        }
         return $this->render('search/index.html.twig', [
-            'data' => $booksApiService->getBooks(),
+            'data' => $booksApiService->getBooks($search),
             'searchForm' => $form->createView()
         ]);
     }
