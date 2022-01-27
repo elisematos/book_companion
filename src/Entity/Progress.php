@@ -15,7 +15,7 @@ class Progress
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string')]
     private $bookId;
 
     #[ORM\Column(type: 'integer')]
@@ -38,12 +38,12 @@ class Progress
         return $this->id;
     }
 
-    public function getBookId(): ?int
+    public function getBookId(): ?string
     {
         return $this->bookId;
     }
 
-    public function setBookId(int $bookId): self
+    public function setBookId(string $bookId): self
     {
         $this->bookId = $bookId;
 
