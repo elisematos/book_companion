@@ -22,7 +22,7 @@
                     {% else %}
                         <h5>Auteur inconnu</h5>
                     {% endif %}
-            <a href="{{ path('add_book', {id:item.id}) }}" role="button">Ajouter à ma liste</a>
+            <a href="{{ path('add_book', {'bookId' : item.id}) }}" role="button">Ajouter à ma liste</a>
         </article>
         {% endfor %}
     </section>

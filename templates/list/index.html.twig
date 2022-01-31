@@ -3,58 +3,24 @@
 {% block title %}Liste{% endblock %}
 
 {% block body %}
-    <article>
-        <h2>
-            Book title
-            <progress value="20" max="100"></progress>
-        </h2>
-        <details>
-            <summary>Collapsible elements 1</summary>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque urna diam, tincidunt nec porta sed, auctor id velit. Etiam venenatis nisl ut orci consequat, vitae tempus quam commodo. Nulla non mauris ipsum. Aliquam eu posuere orci. Nulla convallis lectus rutrum quam hendrerit, in facilisis elit sollicitudin. Mauris pulvinar pulvinar mi, dictum tristique elit auctor quis. Maecenas ac ipsum ultrices, porta turpis sit amet, congue turpis.</p>
-        </details>
-
-        <details>
-            <summary>Collapsible elements 2</summary>
-            <ul>
-                <li>Vestibulum id elit quis massa interdum sodales.</li>
-                <li>Nunc quis eros vel odio pretium tincidunt nec quis neque.</li>
-            </ul>
-        </details>
-    </article>
-    <article>
-        <h2>
-            Book title
-            <progress value="33" max="100"></progress>
-        </h2>
-        <details>
-            <summary>Collapsible elements 1</summary>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque urna diam, tincidunt nec porta sed, auctor id velit. Etiam venenatis nisl ut orci consequat, vitae tempus quam commodo. Nulla non mauris ipsum. Aliquam eu posuere orci. Nulla convallis lectus rutrum quam hendrerit, in facilisis elit sollicitudin. Mauris pulvinar pulvinar mi, dictum tristique elit auctor quis. Maecenas ac ipsum ultrices, porta turpis sit amet, congue turpis.</p>
-        </details>
-
-        <details>
-            <summary>Collapsible elements 2</summary>
-            <ul>
-                <li>Vestibulum id elit quis massa interdum sodales.</li>
-                <li>Nunc quis eros vel odio pretium tincidunt nec quis neque.</li>
-            </ul>
-        </details>
-    </article>
-    <article>
-        <h2>
-            Book title
-            <progress value="100" max="100"></progress>
-        </h2>
-        <details>
-            <summary>Collapsible elements 1</summary>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque urna diam, tincidunt nec porta sed, auctor id velit. Etiam venenatis nisl ut orci consequat, vitae tempus quam commodo. Nulla non mauris ipsum. Aliquam eu posuere orci. Nulla convallis lectus rutrum quam hendrerit, in facilisis elit sollicitudin. Mauris pulvinar pulvinar mi, dictum tristique elit auctor quis. Maecenas ac ipsum ultrices, porta turpis sit amet, congue turpis.</p>
-        </details>
-
-        <details>
-            <summary>Collapsible elements 2</summary>
-            <ul>
-                <li>Vestibulum id elit quis massa interdum sodales.</li>
-                <li>Nunc quis eros vel odio pretium tincidunt nec quis neque.</li>
-            </ul>
-        </details>
-    </article>
+    {% if progressList is defined %}
+        {% for progress in progressList %}
+            <article>
+                <h2>
+                    {{ progress.bookId }}
+                    <progress value="20" max="100"></progress>
+                </h2>
+                {% for note in progress.notes %}
+                    <details>
+                        <summary>{{ note.title }}</summary>
+                        <p>{{ note.text }}</p>
+                    </details>
+                {% endfor %}
+            </article>
+        {% endfor %}
+    {% else %}
+        <article>
+        <a href="{{ path('search') }}" role="button" class="contrast">Rechercher un livre</a>
+        </article>
+    {% endif %}
 {% endblock %}
