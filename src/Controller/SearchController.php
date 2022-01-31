@@ -29,13 +29,13 @@ class SearchController extends AbstractController
         ]);
     }
 
-    #[Route('/search/addBook', name: 'add_book')]
-    public function addBookToUserList(ManagerRegistry $doctrine): Response
+    #[Route('/search/addBook/{id}', name: 'add_book')]
+    public function addBookToUserList(ManagerRegistry $doctrine, $bookId): Response
     {
         $entityManager = $doctrine->getManager();
         $progress = new Progress();
         $progress->setUser($this->getUser());
-        $progress->setBookId('AwhQDwAAQBAJ');
+        $progress->setBookId($bookId);
         $progress->setPagesRead(0);
 
         $entityManager->persist($progress);
