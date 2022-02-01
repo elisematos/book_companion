@@ -41,6 +41,6 @@ class SearchController extends AbstractController
         $entityManager->persist($progress);
         $entityManager->flush();
 
-        return new Response("ADDED new book to reading list");
+        return $this->redirectToRoute('list');
     }
 }
