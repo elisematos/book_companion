@@ -34,5 +34,6 @@ class BooksApiService
             'GET',
             'https://www.googleapis.com/books/v1/volumes/' . $bookId
         );
+        return $response->toArray();
     }
 }

@@ -3,24 +3,26 @@
 {% block title %}Liste{% endblock %}
 
 {% block body %}
-    {% if progressList is defined %}
+    {% if bookList is defined %}
+        <article>
+        {% for book in bookList %}
+            <h2>
+                {{ book.volumeInfo.title }}, {{ book.volumeInfo.authors.0 }}
+                <progress value="20" max="100"></progress>
+            </h2>
+        {% endfor %}
         {% for progress in progressList %}
-            <article>
-                <h2>
-                    {{ progress.bookId }}
-                    <progress value="20" max="100"></progress>
-                </h2>
-                {% for note in progress.notes %}
-                    <details>
-                        <summary>{{ note.title }}</summary>
-                        <p>{{ note.text }}</p>
-                    </details>
-                {% endfor %}
+            {% for note in progress.notes %}
+                <details>
+                    <summary>{{ note.title }}</summary>
+                    <p>{{ note.text }}</p>
+                </details>
+            {% endfor %}
             </article>
         {% endfor %}
     {% else %}
         <article>
-        <a href="{{ path('search') }}" role="button" class="contrast">Rechercher un livre</a>
+            <a href="{{ path('search') }}" role="button" class="contrast">Rechercher un livre</a>
         </article>
     {% endif %}
 {% endblock %}
