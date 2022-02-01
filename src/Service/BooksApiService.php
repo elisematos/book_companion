@@ -14,7 +14,8 @@ class BooksApiService
         $this->client = $client;
     }
 
-    public function getBooks($q): array {
+    public function getBooks($q): array
+    {
         $response = $this->client->request(
             'GET',
             'https://www.googleapis.com/books/v1/volumes?', [
@@ -25,5 +26,13 @@ class BooksApiService
             ]
         );
         return $response->toArray();
+    }
+
+    public function getBookById($bookId): array
+    {
+        $response = $this->client->request(
+            'GET',
+            'https://www.googleapis.com/books/v1/volumes/' . $bookId
+        );
     }
 }
